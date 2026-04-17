@@ -12,32 +12,24 @@ struct nme{
 
 struct nme estoque[60];
 
-void menu(){
-    printf("Escolha uma opção:\n1- Cadastrar produto\n2- Buscar produto\n3- Sair do sistema\n\n");
-}
+int opcao;
 
 void cadastro(){
     printf("\nnome do produto: ");
     scanf(" %s", &estoque[caunt].nome);
     printf("quantidade do produto: ");
     scanf(" %i", &estoque[caunt].quantidade);
-    printf("o id desse produto é %i\n", caunt);
+    printf("o id desse produto é %i\n\n", caunt);
 }
 
 void busca(int id){
     printf("produto %i\nnome: %s\nquantidade: %i\n", caunt, estoque[caunt].nome,estoque[caunt].quantidade);
 }
 
-int main() {
-
-    bool a = true;
-    int opcao, id;
-    
-    do{
-       menu(); 
-       scanf("%i", &opcao);
-
-       switch (opcao){
+void menu(int opc){
+    int id;
+    opcao = opc;
+    switch (opc){
         case 1:
             caunt++;
             cadastro(caunt);
@@ -51,14 +43,20 @@ int main() {
 
         case 3:
             printf("Adeus verme!");
-            a == false;
+            
         break;
-       
+
         default:
             printf("opção invalida!!!\n\n\n\n");
         break;
-       }
+    }
+}
 
-    }while(a = true);
+int main() {
+    do{
+        printf("Escolha uma opção:\n1- Cadastrar produto\n2- Buscar produto\n3- Sair do sistema\n4 - \n\n");
+        scanf("%i", &opcao);
+        menu(opcao);
+    }while(opcao != 3);
     return 0;
 }
